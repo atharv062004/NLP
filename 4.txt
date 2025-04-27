@@ -1,0 +1,21 @@
+print("------[4. Semantic Relations using WordNet]------")
+from nltk.corpus import wordnet
+import nltk
+nltk.download('wordnet')
+
+word = "bank"
+synsets = wordnet.synsets(word)
+for syn in synsets:
+    print(syn.name(), ":", syn.definition())
+
+# Tokenization and BoW
+from nltk.tokenize import word_tokenize
+from sklearn.feature_extraction.text import CountVectorizer
+text = "The bank was flooded during the storm."
+tokens = word_tokenize(text)
+print("Tokens:", tokens)
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform([text])
+print("Vocabulary:", vectorizer.get_feature_names_out())
+print("BoW Matrix:", X.toarray())

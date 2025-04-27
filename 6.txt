@@ -1,0 +1,22 @@
+print("------[6. Named Entity Recognition using spaCy]------")
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+text = "Google is acquiring a startup in Mumbai for $1 million"
+doc = nlp(text)
+for ent in doc.ents:
+    print(ent.text, ent.label_)
+
+# Tokenization and BoW
+from nltk.tokenize import word_tokenize
+from sklearn.feature_extraction.text import CountVectorizer
+import nltk
+nltk.download('punkt')
+
+tokens = word_tokenize(text)
+print("Tokens:", tokens)
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform([text])
+print("Vocabulary:", vectorizer.get_feature_names_out())
+print("BoW Matrix:", X.toarray())

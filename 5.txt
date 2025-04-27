@@ -1,0 +1,16 @@
+print("------[5. N-Gram Model]------")
+from nltk import ngrams, word_tokenize
+import nltk
+nltk.download('punkt')
+
+text = "I love learning NLP with Python"
+tokens = word_tokenize(text)
+print("Bigrams:", list(ngrams(tokens, 2)))
+print("Trigrams:", list(ngrams(tokens, 3)))
+
+# Tokenization and BoW
+from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform([text])
+print("Vocabulary:", vectorizer.get_feature_names_out())
+print("BoW Matrix:", X.toarray())

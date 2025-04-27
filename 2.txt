@@ -1,0 +1,23 @@
+print("------[2. Morphology using Add/Delete]------")
+morph_table = {
+    "run": {"root": "run", "tense": "present"},
+    "running": {"root": "run", "tense": "continuous"}
+}
+del morph_table["running"]
+for word, features in morph_table.items():
+    print(f"{word}: {features}")
+
+# Tokenization and BoW
+from nltk.tokenize import word_tokenize
+from sklearn.feature_extraction.text import CountVectorizer
+import nltk
+nltk.download('punkt')
+
+text = "Run and running are forms of the same root verb."
+tokens = word_tokenize(text)
+print("Tokens:", tokens)
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform([text])
+print("Vocabulary:", vectorizer.get_feature_names_out())
+print("BoW Matrix:", X.toarray())

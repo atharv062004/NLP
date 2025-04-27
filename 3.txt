@@ -1,0 +1,17 @@
+print("------[3. POS Tagging]------")
+import nltk
+from nltk import pos_tag, word_tokenize
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+
+text = "Birds Flying in the sky are a beautiful sight."
+tokens = word_tokenize(text)
+tags = pos_tag(tokens)
+print(tags)
+
+# Tokenization and BoW
+from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform([text])
+print("Vocabulary:", vectorizer.get_feature_names_out())
+print("BoW Matrix:", X.toarray())
